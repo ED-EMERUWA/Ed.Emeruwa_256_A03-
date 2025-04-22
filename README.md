@@ -1,7 +1,7 @@
 # EventFlow 
 A Django Web Application for Event Registration
 
-## 📌 Overview
+## Overview
 
 **EventFlow** is a web-based event registration system developed for ITAS256 assignment 3. It supports two types of users: **Administrators** and **Registrants**.
 
