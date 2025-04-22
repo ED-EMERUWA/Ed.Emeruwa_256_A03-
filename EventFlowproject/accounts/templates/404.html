@@ -1,0 +1,20 @@
+<!-- 404_custom.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col font-['Space_Grotesk']">
+    <div class="flex flex-col items-center justify-center flex-1 text-center">
+        <h1 class="text-6xl font-extrabold text-[var(--color-accent)]">404</h1>
+        <p class="text-xl mt-4">Oops! The page you're looking for could not be found.</p>
+        <a href="{% url 'home' %}" class="mt-6 px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl hover:bg-[var(--color-highlight)] transition duration-300">
+            Go Back to Home
+        </a>
+    </div>
+</body>
+</html>

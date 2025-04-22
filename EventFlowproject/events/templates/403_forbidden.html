@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Forbidden - EventFlow{% endblock %}
+
+{% block content %}
+    <main class="container mx-auto px-6 py-10 mt-6 bg-white rounded-3xl shadow-2xl flex-1 ">
+        <h2 class="text-3xl font-bold text-center text-[var(--color-accent)]">403 Forbidden</h2>
+        <p class="text-lg text-center mt-4">You do not have permission to access this page.</p>
+        <div class="flex justify-center mt-8">
+            <a href="{% url 'event_list' %}" class="px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl hover:bg-[var(--color-highlight)] transition duration-300">
+                Go Back to Events
+            </a>
+        </div>
+    </main>
+{% endblock %}

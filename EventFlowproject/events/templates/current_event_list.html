@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-3xl font-bold text-[var(--color-primary)] mb-6">All Events</h2>
+
+<div class="space-y-6">
+  {% for event in events %}
+    <div class="flex items-center justify-between bg-white shadow rounded-xl border-l-8 {% if event in user_events %}border-[#16C47F]{% else %}border-gray-300{% endif %} p-6">
+      <!-- Event Info -->
+      <div>
+        <h3 class="text-xl font-bold text-gray-800">{{ event.name }}</h3>
+        <p class="text-gray-600 mt-1">{{ event.description }}</p>
+        <p class="text-sm text-gray-500 mt-2">
+          <strong>Starts:</strong> {{ event.start_date }} |
+          <strong>Ends:</strong> {{ event.end_date }}
+        </p>
+      </div>
+
+      <!-- Action Button -->
+      <div class="ml-4">
+        {% if event in user_events %}
+          <form method="post" action="{% url 'unregister_event' event.id %}">
+            {% csrf_token %}
+            <button type="submit" class="bg-[#F93827] text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">
+              Unregister
+            </button>
+          </form>
+        {% else %}
+          <form method="post" action="{% url 'register_event' event.id %}">
+            {% csrf_token %}
+            <button type="submit" class="bg-[#16C47F] text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">
+              Register
+            </button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-gray-600">No events available at this time.</p>
+  {% endfor %}
+</div>
+{% endblock %}
