@@ -36,7 +36,7 @@ This application is built using the Django framework with templates, forms, and 
 ## Getting Started
 
 ### 1. Clone the repo.
-### 2. In you terminal run `python magae.py createsuperuser` to cretw supe user.
+### 2. In you terminal run `python manage.py createsuperuser` to cretw supe user.
 ### 3. Add created super user to adminstrators group.
 ### 4. Run `python manage.py runserver` to run app.
 ### 5. Login to application.
