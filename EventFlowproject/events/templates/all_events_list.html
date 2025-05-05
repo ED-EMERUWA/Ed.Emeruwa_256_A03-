@@ -21,7 +21,7 @@
 <!-- Events List -->
 <div class="space-y-6">
   {% for event in events %}
-    <div class="flex items-center justify-between bg-white shadow rounded-xl border-l-8 {% if event in user_events %}border-[#16C47F]{% else %}border-gray-300{% endif %} p-6">
+    <div class="flex items-center justify-between bg-white shadow rounded-xl border-l-8 border-gray-300 p-6">
       <!-- Event Info -->
       <div>
         <h3 class="text-xl font-bold text-gray-800">{{ event.name }}</h3>
@@ -32,23 +32,15 @@
         </p>
       </div>
 
-      <!-- Action Button -->
-      <div class="ml-4">
-        {% if event in user_events %}
-          <form method="post" action="{% url 'unregister_event' event.id %}">
-            {% csrf_token %}
-            <button type="submit" class="bg-[#F93827] text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">
-              Unregister
-            </button>
-          </form>
-        {% else %}
-          <form method="post" action="{% url 'register_event' event.id %}">
-            {% csrf_token %}
-            <button type="submit" class="bg-[#16C47F] text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">
-              Register
-            </button>
-          </form>
-        {% endif %}
+      <!-- Edit/Delete Buttons -->
+      <div class="ml-4 flex space-x-3">
+        <a href="{% url 'edit_event' event.id %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 transition">
+          Edit
+        </a>
+        <a href="{% url 'confirm_delete_event' event.id %}" class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition">
+          Delete
+        </a>
+
       </div>
     </div>
   {% empty %}

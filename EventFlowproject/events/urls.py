@@ -8,4 +8,9 @@ urlpatterns = [
     path('unregister/<int:event_id>/', views.unregister_from_event, name='unregister_event'),
     path('all_users', views.user_list, name='user_list'),
     path('create/', views.create_event, name='create_event'),
+    path('admin-panel/', views.admin_panel, name='admin_panel'),
+    path('edit/<int:event_id>/', views.edit_event, name='edit_event'),
+    path('delete/<int:event_id>/', views.confirm_delete_event, name='confirm_delete_event'),
+    path('delete/<int:event_id>/confirm/', views.delete_event, name='delete_event'),
+
 ]
