@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Admin Panel - EventFlow{% endblock %}
+
+{% block content %}
+<h2 class="text-3xl font-bold mb-8 text-center text-[var(--color-accent)]">Admin Panel</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a href="{% url 'user_list' %}" class="block p-6 rounded-2xl bg-[var(--color-primary)] text-white font-bold text-center hover:bg-[var(--color-highlight)] transition duration-300 shadow-xl">
+        View Users
+    </a>
+    <a href="{% url 'all_events_list' %}" class="block p-6 rounded-2xl bg-[var(--color-primary)] text-white font-bold text-center hover:bg-[var(--color-highlight)] transition duration-300 shadow-xl">
+        All Events
+    </a>
+    <a href="{% url 'create_event' %}" class="block p-6 rounded-2xl bg-[var(--color-primary)] text-white font-bold text-center hover:bg-[var(--color-highlight)] transition duration-300 shadow-xl">
+        Create Event
+    </a>
+</div>
+{% endblock %}

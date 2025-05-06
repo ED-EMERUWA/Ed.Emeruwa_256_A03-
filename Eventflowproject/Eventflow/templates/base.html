@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EventFlow{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-primary: #FF9D23;
+            --color-accent: #F93827;
+            --color-highlight: #FFD65A;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col font-['Space_Grotesk']">
+
+    <!-- Navigation -->
+    <nav class="bg-[var(--color-primary)] shadow-md py-6">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <h1 class="text-[var(--color-highlight)] text-3xl font-extrabold tracking-widest drop-shadow">EventFlow</h1>
+            <ul class="flex space-x-8 text-lg font-bold">
+                <li><a href="{% url 'event_list' %}" class="text-white hover:text-[var(--color-highlight)] transition duration-300">Events</a></li>
+              
+                <li><a href="{% url 'admin_panel' %}" class="text-white hover:text-[var(--color-highlight)] transition duration-300">Admin Panel</a></li>
+
+                <li><a href="{% url 'user_logout' %}" class="text-white hover:text-[var(--color-accent)] transition duration-300">Log out</a></li>
+            
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-10 mt-6 bg-white rounded-3xl shadow-2xl flex-1 ">
+        {% block content %}
+        <!-- Page-specific content here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center p-6 mt-10 text-gray-700 bg-gray-200 border-t-4 border-[var(--color-primary)] tracking-widest font-semibold text-sm">
+        &copy; 2025 <span class="text-[var(--color-accent)] font-extrabold">EventFlow</span> • Built by Ed Emeruwa
+    </footer>
+
+</body>
+</html>

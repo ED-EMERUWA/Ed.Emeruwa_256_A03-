@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Browse Events - EventFlow{% endblock %}
+
+{% block content %}
+<h2 class="text-3xl font-bold text-[var(--color-primary)] mb-6">Browse Events</h2>
+
+<!-- Filter Dropdown -->
+<form method="get" class="mb-8 max-w-sm">
+  <label for="filter" class="block mb-2 text-lg font-semibold text-gray-700">Filter Events:</label>
+  <select name="filter" id="filter"
+          onchange="this.form.submit()"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white shadow focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
+    <option value="all" {% if selected_filter == "all" %}selected{% endif %}>All Events</option>
+    <option value="past" {% if selected_filter == "past" %}selected{% endif %}>Past Events</option>
+    <option value="current" {% if selected_filter == "current" %}selected{% endif %}>Current Events</option>
+    <option value="upcoming" {% if selected_filter == "upcoming" %}selected{% endif %}>Upcoming Events</option>
+  </select>
+</form>
+
+<!-- Events List -->
+<div class="space-y-6">
+  {% for event in events %}
+    <div class="flex items-center justify-between bg-white shadow rounded-xl border-l-8 border-gray-300 p-6">
+      <!-- Event Info -->
+      <div>
+        <h3 class="text-xl font-bold text-gray-800">{{ event.name }}</h3>
+        <p class="text-gray-600 mt-1">{{ event.description }}</p>
+        <p class="text-sm text-gray-500 mt-2">
+          <strong>Starts:</strong> {{ event.start_date }} |
+          <strong>Ends:</strong> {{ event.end_date }}
+        </p>
+      </div>
+
+      <!-- Edit/Delete Buttons -->
+      <div class="ml-4 flex space-x-3">
+        <a href="{% url 'edit_event' event.id %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 transition">
+          Edit
+        </a>
+        <a href="{% url 'confirm_delete_event' event.id %}" class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition">
+          Delete
+        </a>
+
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-gray-600 italic">No events available at this time.</p>
+  {% endfor %}
+</div>
+{% endblock %}

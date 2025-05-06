@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Event - EventFlow{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-xl border-l-[6px] border-[var(--color-primary)]">
+  <h2 class="text-3xl font-extrabold text-[var(--color-primary)] mb-6 text-center tracking-wide">Create New Event</h2>
+
+  <form method="post" class="space-y-6">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% if form.start_date.errors %}
+      <ul>
+        {% for error in form.start_date.errors %}
+          <li class="text-red-500">{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if form.end_date.errors %}
+      <ul>
+        {% for error in form.end_date.errors %}
+          <li class="text-red-500">{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <button type="submit" class="w-full bg-[#16C47F] hover:bg-emerald-600 text-white text-lg font-bold py-2.5 rounded-lg shadow transition duration-200">
+      Create Event
+    </button>
+  </form>
+
+  <p class="text-center mt-6 text-sm text-gray-600">
+    <a href="{% url 'event_list' %}" class="text-[var(--color-accent)] hover:underline font-semibold">← Back to Events</a>
+  </p>
+</div>
+{% endblock %}

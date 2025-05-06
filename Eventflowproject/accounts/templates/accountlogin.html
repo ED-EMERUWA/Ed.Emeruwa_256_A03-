@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - EventFlow{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-2xl border-t-[6px] border-[var(--color-accent)]">
+    <h2 class="text-3xl font-extrabold text-[var(--color-primary)] mb-6 text-center tracking-wide">Login to EventFlow</h2>
+
+    {% if error %}
+        <div class="bg-red-100 text-red-700 p-4 rounded-md mb-4 border border-red-300">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST" class="space-y-6">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="w-full bg-[var(--color-accent)] hover:bg-[var(--color-primary)] text-white text-lg font-bold py-2.5 rounded-lg shadow transition duration-200">
+            Login
+        </button>
+    </form>
+
+    <p class="text-center text-gray-600 mt-6">
+        Don't have an account? 
+        <a href="{% url 'signupaccount' %}" class="text-[var(--color-primary)] hover:underline font-semibold">Sign up</a>
+    </p>
+</div>
+{% endblock %}
