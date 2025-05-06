@@ -1,9 +1,0 @@
-django 
-pillow
-django-allauth
-python-dotenv
-requests
-jwt
-django
-mysqlclient
-python-decouple
